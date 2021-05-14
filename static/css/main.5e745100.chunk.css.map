@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/components/Tsuyobaha/index.css"],"names":[],"mappings":"AAAA,OACI,UAAW,CACX,WAAY,CACZ,gBAAiB,CACjB,oBACJ","file":"main.5e745100.chunk.css","sourcesContent":["button {\r\n    width: 90px;\r\n    height: 90px;\r\n    margin-left: 20px;\r\n    background-size:100%\r\n}"]}
