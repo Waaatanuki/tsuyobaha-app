@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/gbf-app/static/css/main.5e745100.chunk.css",
-    "main.js": "/gbf-app/static/js/main.c63595ef.chunk.js",
-    "main.js.map": "/gbf-app/static/js/main.c63595ef.chunk.js.map",
+    "main.css": "/gbf-app/static/css/main.1f606561.chunk.css",
+    "main.js": "/gbf-app/static/js/main.4a66724c.chunk.js",
+    "main.js.map": "/gbf-app/static/js/main.4a66724c.chunk.js.map",
     "runtime-main.js": "/gbf-app/static/js/runtime-main.09556f11.js",
     "runtime-main.js.map": "/gbf-app/static/js/runtime-main.09556f11.js.map",
-    "static/js/2.63999694.chunk.js": "/gbf-app/static/js/2.63999694.chunk.js",
-    "static/js/2.63999694.chunk.js.map": "/gbf-app/static/js/2.63999694.chunk.js.map",
+    "static/js/2.5c60825b.chunk.js": "/gbf-app/static/js/2.5c60825b.chunk.js",
+    "static/js/2.5c60825b.chunk.js.map": "/gbf-app/static/js/2.5c60825b.chunk.js.map",
     "index.html": "/gbf-app/index.html",
-    "static/css/main.5e745100.chunk.css.map": "/gbf-app/static/css/main.5e745100.chunk.css.map",
-    "static/js/2.63999694.chunk.js.LICENSE.txt": "/gbf-app/static/js/2.63999694.chunk.js.LICENSE.txt"
+    "static/css/main.1f606561.chunk.css.map": "/gbf-app/static/css/main.1f606561.chunk.css.map",
+    "static/js/2.5c60825b.chunk.js.LICENSE.txt": "/gbf-app/static/js/2.5c60825b.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.09556f11.js",
-    "static/js/2.63999694.chunk.js",
-    "static/css/main.5e745100.chunk.css",
-    "static/js/main.c63595ef.chunk.js"
+    "static/js/2.5c60825b.chunk.js",
+    "static/css/main.1f606561.chunk.css",
+    "static/js/main.4a66724c.chunk.js"
   ]
 }
