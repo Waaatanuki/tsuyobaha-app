@@ -8,6 +8,8 @@ button {
 .list{
     height: 100px;
     width: 300px;
+    margin: 0 auto;
+    text-align:left;
     overflow: auto;
 }
 .message{
