@@ -8,65 +8,80 @@ import pic_ffj from './pic/ffj.jpg';
 
 export default class Tsuyobaha extends Component {
     state={
-        total:0,aobako:0,ring3:0,ring2:0,ring1:0,ffj:0,nothing:0}
+        total:0,aobako:0,ring3:0,ring2:0,ring1:0,ffj:0,nothing:0,message:[]}
 
     reset=()=>{
-        this.setState({total:0,aobako:0,ring3:0,ring2:0,ring1:0,ffj:0,nothing:0})
+        this.setState({total:0,aobako:0,ring3:0,ring2:0,ring1:0,ffj:0,nothing:0,message:[]});
         console.clear()
     }
 
-    plus=(itemType)=>{
-        const {total,aobako,ring3,ring2,ring1,ffj,nothing} = this.state
-        this.setState({total:total+1})
-        switch(itemType){
-            case 'ring3':
-                console.log("荣冠指环")
-                this.setState({aobako:aobako+1})
-                this.setState({ring3:ring3+1})
-                break
-            case 'ring2':
-                console.log("霸业指环")
-                this.setState({aobako:aobako+1})
-                this.setState({ring2:ring2+1})
-                break
-            case 'ring1':
-                console.log("至极指环")
-                this.setState({aobako:aobako+1})
-                this.setState({ring1:ring1+1})
-                break
-            case 'ffj':
-                console.log("菲菲金！！！！！！！！！！！")
-                this.setState({aobako:aobako+1})
-                this.setState({ffj:ffj+1})
-                break
-            case 'nothing':
-                console.log("白打了")
-                this.setState({nothing:nothing+1})
-                break
-            default:
-                console.log("?")
+    add=(itemType)=>{
+        return (e)=>{
+            const {total,aobako} = this.state
+            this.setState({
+                [itemType] : this.state[`${itemType}`]+1,
+                total : total+1,
+                aobako : itemType!== 'nothing'? aobako+1 : aobako
+            },()=>{
+                const {message,total} = this.state
+                const time=this.dateFormat("HH:MM:SS", new Date())
+                let outputType = ""
+                if (itemType ==="ring3"){
+                    outputType ="荣冠指环"
+                }else if (itemType==="ring2"){
+                    outputType ="霸业指环"
+                }else if (itemType==="ring1"){
+                    outputType ="至极指环"
+                }else if (itemType==="ffj"){
+                    outputType ="ffj!!!"
+                }else if (itemType==="nothing"){
+                    outputType ="白打了"
+                }
+                let newMessage = `第${total}把，[${time}]，掉落：${outputType}`
+                this.setState({message:[newMessage,...message]})
+            })
         }
     }
 
-    componentDidUpdate() {
-        const {total,aobako} = this.state
-        console.log(`↑总次数：${total}，时间：${new Date()},蓝箱率：${((aobako)/(total)*100).toFixed()}%`)
-        alert("nba")
+    //时间格式化
+    dateFormat(fmt, date) {
+        let ret;
+        const opt = {
+            "Y+": date.getFullYear().toString(),        // 年
+            "m+": (date.getMonth() + 1).toString(),     // 月
+            "d+": date.getDate().toString(),            // 日
+            "H+": date.getHours().toString(),           // 时
+            "M+": date.getMinutes().toString(),         // 分
+            "S+": date.getSeconds().toString()          // 秒
+            // 有其他格式化字符需求可以继续添加，必须转化成字符串
+        };
+        for (let k in opt) {
+            ret = new RegExp("(" + k + ")").exec(fmt);
+            if (ret) {
+                fmt = fmt.replace(ret[1], (ret[1].length === 1) ? (opt[k]) : (opt[k].padStart(ret[1].length, "0")))
+            };
+        };
+        return fmt;
     }
 
     render() {
         return(
             <div>
-                <h1>总次数：    {this.state.total}</h1>
-                <h1>蓝箱：      {this.state.aobako}</h1>
-                <h1>荣冠指环：  {this.state.ring3} <button style={{backgroundImage:`url(${pic_ring3})`}} onClick={()=>this.plus('ring3')}/></h1>
-                <h1>霸业指环：  {this.state.ring2} <button style={{backgroundImage:`url(${pic_ring2})`}} onClick={()=>this.plus('ring2')}/></h1>
-                <h1>至极指环：  {this.state.ring1} <button style={{backgroundImage:`url(${pic_ring1})`}} onClick={()=>this.plus('ring1')}/></h1>
-                <h1>菲菲色金：  {this.state.ffj} <button style={{backgroundImage:`url(${pic_ffj})`}} onClick={()=>this.plus('ffj')}/></h1>
-                <h1>啥都没有：  {this.state.nothing} <button onClick={()=>this.plus('nothing')}>白打了</button></h1>
+                <h2>总次数：{this.state.total} 蓝箱：{this.state.aobako}</h2>
+                <h2>荣冠指环：{this.state.ring3} 霸业指环：{this.state.ring2}</h2>
+                <h2>至极指环：{this.state.ring1} 菲菲色金：{this.state.ffj} </h2>
+                <button style={{backgroundImage:`url(${pic_ring3})`}} onClick={this.add('ring3')}/>
+                <button style={{backgroundImage:`url(${pic_ring2})`}} onClick={this.add('ring2')}/><br/>
+                <button style={{backgroundImage:`url(${pic_ring1})`}} onClick={this.add('ring1')}/>
+                <button style={{backgroundImage:`url(${pic_ffj})`}} onClick={this.add('ffj')}/><br/>
+                <button onClick={this.add('nothing')}>白打了</button>
                 <button onClick={this.reset}>重置</button> 
+                <div className="list">
+                    {this.state.message.map((data,index) => {
+                        return <div className="message" key={index}>{data}</div>
+                    })}
+                </div>
             </div>
-            
         )
     }
 }

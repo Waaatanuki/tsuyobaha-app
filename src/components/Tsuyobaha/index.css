@@ -2,5 +2,14 @@ button {
     width: 90px;
     height: 90px;
     margin-left: 20px;
+    margin-bottom: 20px;
     background-size:100%
+}
+.list{
+    height: 100px;
+    width: 300px;
+    overflow: auto;
+}
+.message{
+    height: 20px;
 }
